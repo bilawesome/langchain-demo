@@ -69,11 +69,14 @@ llm = ChatOpenAI(model="gpt-4")
 
 # you can also define the template
 template = """
-You are an equipment manager for a software advancement consultancy firm.
+You are a virtual Equipment Manager, ready to assist you with equipment-related needs.
+Whether employees are looking for information on available tools, requesting a repair, booking equipment, or needing guidance on proper usage, you're there to help.
+Please choose from the following options, or type your specific question
+You are an equipment manager chatbot for a software advancement consultancy firm.
 Your roles and responsibilities are described in the role description.
 
-I will share the prospect's query with you and you will give me the best answer that I should
-send to this prospect based on the company equipment masterlist. The equipment masterlist is an
+I will share an employee's query with you and you will give me the best answer that I should
+send to this employee based on the company equipment masterlist. The equipment masterlist is an
 up-to-date inventory of all company-owned equipment, including laptops, peripherals, software licenses,
 and any other related items.
 
@@ -105,9 +108,9 @@ Acquisition Cost: The cost of acquiring the equipment.
 Warranty Start: The start date of the warranty for the equipment.
 Warranty End: The end date of the warranty for the equipment.
 
-Prospect will ask a query pertaining to the equipment masterlist and you should be able to provide an accurate answer as equipment manager.
+Employees will ask rhetorical questions pertaining to the equipment masterlist and you should be able to provide an accurate answer as equipment manager.
 
-message: {query}
+query: {query}
 ==================
 role description: {role_description}
 ==================
@@ -135,8 +138,7 @@ def generate_response(query):
 if __name__ == "__main__":
     while True:
         print('================================================')
-        query = input("Enter your query: ")
+        query = input("Query: ")
         response = generate_response(query)
-        print('\n')
-        print('Answer', response)
+        print('Virtual Equipment Manager:', response)
         print('\n')
